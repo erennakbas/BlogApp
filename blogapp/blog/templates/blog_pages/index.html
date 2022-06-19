@@ -1,0 +1,29 @@
+{%extends 'base.html' %}
+{%load static%}
+
+{%block title%} Home Page {%endblock title%}
+{%block css_files%} 
+    <link rel="stylesheet" href="{%static 'blog/css/style.css' %}">
+{%endblock%}
+{% block content %}
+    <div class="container mt-3">
+        <div class="row flex-row">
+            {%include 'partials/_categories.html'%}
+            <div class="col-9">
+                <h4>Home Page</h4>
+                <hr>
+                {%for blog in blogs%}
+                    {%if blog.is_active%}
+                        {%include 'blog_pages/partials/_blog.html'%}
+                    {%endif%}
+                {%endfor%}
+                
+               
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{%block js_files%} 
+    <script src="{%static 'blog/js/script.js'%}"></script>
+{%endblock%}
